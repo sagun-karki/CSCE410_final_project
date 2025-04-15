@@ -1,0 +1,12 @@
+pandas
+numpy
+sentence-transformers
+faiss-cpu
+scikit-learn
+scipy
+transformers
+datasets
+tqdm
+
+# to download the dataset
+gsutil
