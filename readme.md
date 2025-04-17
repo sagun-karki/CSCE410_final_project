@@ -2,8 +2,4 @@
 
 ## Download Dataset
 
-Use the following command to download all questions and answers:
-
-```bash
-gsutil -m cp -r gs://natural_questions/ ./data/
-```
+use this simplified dataset [https://huggingface.co/datasets/christti/squad-augmented-v2](https://huggingface.co/datasets/christti/squad-augmented-v2)
