@@ -38,7 +38,7 @@ def build_prompt(qa_context, test_query):
     question = {test_query}
 
     Return the response in this exact JSON format:
-    "question": "...", "answer": "...", summary: "<make natural language summary of the answer using the context> + <use other information available in the context to provide a summary of the answer>"
+    "question": "...", "answer": "<provide an answer in one sentence using the context provided, modify the question to answer the questions>", summary: "<make natural language summary of the answer using the context> + <use other information available in the context to provide a summary of the answer> + <Provide additional context using your knowledge>, Please do not drift to other topics while summarizing and provide me summary of around 125 words"
 
     Do **not** add anything else. Do **not** change the format. Do **not** include explanations, notes, or extra content. Follow instructions precisely.
     """ 

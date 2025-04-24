@@ -67,7 +67,7 @@ def get_top_k_answers(query, questions: list, enhance_query: bool = False, k=5):
 
 
 if __name__ == "__main__":
-    TEST_QUERY = "where is kathmandu?"
+    TEST_QUERY = "What does antibiosis mean?"
     QA_BLOCKS_FINAL = get_top_k_answers(
         TEST_QUERY, k=5, questions=questions_list, enhance_query=True)
     QA_CONTEXT_FINAL = "\n\n".join(QA_BLOCKS_FINAL)
