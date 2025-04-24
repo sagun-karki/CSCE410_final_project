@@ -50,7 +50,7 @@ def get_top_k_answers(query, questions: list, enhance_query: bool = False, k=5):
 if __name__ == "__main__":
     while True:
         USER_QUERY = input(
-            "Enter your query (or type 'exit' to quit): ").strip()
+            "Enter your query (or type 'exit' to quit, 'cls' to clear screen): ").strip()
         if USER_QUERY.lower() == "exit":
             break
         elif USER_QUERY.lower() == "cls":
