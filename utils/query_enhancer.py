@@ -26,23 +26,29 @@ def enhance_query_basic_english(query, model="llama3.2"):
 
 
 def build_prompt(qa_context, test_query):
-    final_prompt = f"""You are provided with a set of example questions and their correct answers. These are the **only** references you may use. You must not use outside knowledge, assumptions, or inferred facts. Your task is to analyze the example questions and answers to determine the correct answer to a new question based **only** on the provided context.
+    final_prompt = f"""You are kindly provided with a set of example question-answer pairs. These are the **only** references you may rely on. Please do **not** use any outside knowledge, assumptions, or inferred facts. Base your response strictly on the information given.
 
-    Do **not** hallucinate, do **not** infer beyond the given data, do **not** repeat answers unless supported by the references. Stay completely within the scope of the examples. Respect the data and answer only based on what is directly supported by it. Give prority to biggest possible context like country or persons name and then go to smaller context like city or other things.
+    Kindly follow these instructions carefully:
+    - Please do **not** invent or hallucinate any content.
+    - Please do **not** infer beyond what is directly stated.
+    - Please do **not** repeat answers unless clearly supported by the references.
+    - Give priority to broader context (such as country or person) before narrower context (such as city).
+    - If the context is insufficient to answer the question, kindly respond with "I don't know" or "I cannot answer this question."
 
-    Below are the verified question-answer pairs for reference:
+    Below is the verified reference context:
     {qa_context}
 
-    Now, based strictly on the above context, answer the following question:
+    Now, based solely and strictly on the above context, please answer the following:
 
     question = {test_query}
 
-    Return the response in this exact JSON format:
-    "question": "...", "answer": "<provide an answer in one sentence using the context provided, modify the question to answer the questions>", summary: "<make natural language summary of the answer using the context> + <use other information available in the context to provide a summary of the answer> + <Provide additional context using your knowledge>, Please do not drift to other topics while summarizing and provide me summary of around 125 words"
+    Please return your response in this exact JSON format:
+    "question": "<please insert the original question>", "answer": "<please provide a one-sentence answer using only the given context>", summary: "<please write a natural-language explanation of around 125 words using only the provided context. Do not include new facts or drift off-topic.>"
 
-    Do **not** add anything else. Do **not** change the format. Do **not** include explanations, notes, or extra content. Follow instructions precisely.
-    """ 
+    Please do not add anything beyond the specified format. No notes, comments, or extra content should be included.
+    """
     return final_prompt
+
 
 if __name__ == "__main__":
     TEST_QUERY = "Can you tell me the weather forecast for tomorrow?"
