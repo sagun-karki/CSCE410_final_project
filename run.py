@@ -72,7 +72,7 @@ if __name__ == "__main__":
         TEST_QUERY, k=5, questions=questions_list, enhance_query=True)
     QA_CONTEXT_FINAL = "\n\n".join(QA_BLOCKS_FINAL)
     
-    print(QA_CONTEXT_FINAL)
+    # print(QA_CONTEXT_FINAL)
 
     FINAL_PROMPT = build_prompt(QA_CONTEXT_FINAL, TEST_QUERY)
 

@@ -28,7 +28,7 @@ def enhance_query_basic_english(query, model="llama3.2"):
 def build_prompt(qa_context, test_query):
     final_prompt = f"""You are provided with a set of example questions and their correct answers. These are the **only** references you may use. You must not use outside knowledge, assumptions, or inferred facts. Your task is to analyze the example questions and answers to determine the correct answer to a new question based **only** on the provided context.
 
-    Do **not** hallucinate, do **not** infer beyond the given data, do **not** repeat answers unless supported by the references. Stay completely within the scope of the examples. Respect the data and answer only based on what is directly supported by it.
+    Do **not** hallucinate, do **not** infer beyond the given data, do **not** repeat answers unless supported by the references. Stay completely within the scope of the examples. Respect the data and answer only based on what is directly supported by it. Give prority to biggest possible context like country or persons name and then go to smaller context like city or other things.
 
     Below are the verified question-answer pairs for reference:
     {qa_context}
@@ -38,7 +38,7 @@ def build_prompt(qa_context, test_query):
     question = {test_query}
 
     Return the response in this exact JSON format:
-    "question": "...", "answer": "..."
+    "question": "...", "answer": "...", summary: "<make natural language summary of the answer using the context> + <use other information available in the context to provide a summary of the answer>"
 
     Do **not** add anything else. Do **not** change the format. Do **not** include explanations, notes, or extra content. Follow instructions precisely.
     """ 
