@@ -11,8 +11,14 @@ import os
 # ================================
 
 model = SentenceTransformer("all-MiniLM-L6-v2")
-index = faiss.read_index("embeddings/question_index.faiss")
-context_map = load_context_map("data/questions.csv")
+if os.path.exists("embeddings/question_index.faiss") and os.path.exists("data/questions.csv"):
+    index = faiss.read_index("embeddings/question_index.faiss")
+    context_map = load_context_map("data/questions.csv")
+else:
+    print("Required files not found. Building index...")
+    os.system("python ./vectorizer/build_question_index.py")
+    index = faiss.read_index("embeddings/question_index.faiss")
+    context_map = load_context_map("data/questions.csv")
 
 ids = []
 questions_list = []

@@ -7,6 +7,5 @@ scipy
 transformers
 datasets
 tqdm
-
-# to download the dataset
-gsutil
+matplotlib
+plotly
