@@ -1,4 +1,12 @@
-# CSCE 410 Final Project
+# CSCE 410 Final Project Spring 2025
+
+## Team Members
+
+- Ryan Argo  
+- Jason DiBraccio  
+- Victor Knapp  
+- Sagun Karki  
+- Midia Yousif  
 
 ## Dataset
 
