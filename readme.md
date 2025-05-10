@@ -1,5 +1,5 @@
 # CSCE 410 Final Project Spring 2025
-
+This project is a local question-answering system built on top of a pretrained LLM. It uses a preprocessed version of the SQuAD Augmented v2 dataset and performs semantic search using FAISS and SentenceTransformers to retrieve the most relevant context for a user query. The retrieved context is then used to build a prompt for a locally hosted LLM to generate final answers.
 ## Team Members
 
 - Ryan Argo  
