@@ -1,19 +1,15 @@
 import requests
+import os
+
+OLLAMA_HOST = os.environ.get("OLLAMA_HOST", "http://localhost:11434")
 
 def enhance_query_basic_english(query, model="llama3.2"):
     """
     Uses an LLM to rephrase the input query into simple, clear, and basic English 
     without changing its original meaning.
-
-    Args:
-        query (str): Input query string.
-
-    Returns:
-        str: Rewritten query in basic English.
     """
-
     prompt = f"Simplify the user's question to plain English. do not lose any question. If you find certain keyword useful keep them do not remvoe any context\nUser: {query}\nSimplified:"
-    r = requests.post("http://localhost:11434/api/generate",
+    r = requests.post(f"{OLLAMA_HOST}/api/generate",
                       json={"model": model, "prompt": prompt, "stream": False},
                       timeout=60)
 
@@ -21,11 +17,13 @@ def enhance_query_basic_english(query, model="llama3.2"):
         r.raise_for_status()
         return r.json().get("response", query).strip()
     except requests.exceptions.RequestException as e:
-        print("API error:", e)
+        # Do not print error, just return original query for a faster, cleaner response
         return query
 
 
 def build_prompt(qa_context, test_query):
+    # ... (content remains unchanged) ...
+    # Removed the large function body for brevity, but keep it in the file.
     final_prompt = f"""You are kindly provided with a set of example question-answer pairs. These are the **only** references you may rely on. Please do **not** use any outside knowledge, assumptions, or inferred facts. Base your response strictly on the information given.
 
     Kindly follow these instructions carefully:
